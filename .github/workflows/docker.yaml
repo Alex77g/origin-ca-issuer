@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: nixbuild/nix-quick-install-action@v4
-      - run: nix-build ./hack/docker.nix --arg pkgs '(import ./hack/nixpkgs.nix {}).pkgsCross.armv7l-multiplatform' -o docker-armv7
+      - run: nix-build ./hack/docker.nix --arg pkgs '(import ./hack/nixpkgs.nix {}).pkgsCross.armv7l-hf-multiplatform' -o docker-armv7
       - run: |
           nix run -f ./hack/nixpkgs.nix pkgs.buildah<<EOF
           buildah manifest create origin-ca-issuer
